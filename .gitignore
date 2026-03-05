@@ -1,0 +1,6 @@
+docs/
+스티치-시안/
+.DS_Store
+Thumbs.db
+node_modules/
+.env
