@@ -19,6 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active')) {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        }
+    });
+
     // 2. Smooth Scroll & Active Link Highlighting
     const sections = document.querySelectorAll('section');
     const navItems = document.querySelectorAll('.nav-links a[href^="#"]');
