@@ -50,6 +50,15 @@ nav {
     font-size: 22px;
     letter-spacing: 0.02em;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo-img {
+    height: 38px;
+    width: auto;
+    border-radius: 4px;
 }
 
 .nav-links {
