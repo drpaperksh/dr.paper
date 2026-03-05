@@ -28,10 +28,7 @@ body {
 
 /* NAV */
 nav {
-    background: rgba(30, 36, 54, 0.95);
-    /* var(--dark2) with some transparency */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: var(--dark2);
     display: flex;
     align-items: center;
     justify-content: space-between;
