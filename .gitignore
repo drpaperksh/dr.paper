@@ -1,6 +1,9 @@
 docs/
 스티치-시안/
+images/
+backup-src/
 .DS_Store
 Thumbs.db
 node_modules/
 .env
+CLAUDE.md
