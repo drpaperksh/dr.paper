@@ -154,7 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnKakao = document.getElementById('btn-kakao');
     const kakaoModal = document.getElementById('kakao-modal');
     const kakaoModalConfirm = document.getElementById('kakao-modal-confirm');
-    const KAKAO_URL = 'https://open.kakao.com/o/so58F7ji';
+    const KAKAO_URLS = {
+        '유학 SOP/PS': 'https://open.kakao.com/o/g5luAcki',
+        '국내 대학원 학업계획서': 'https://open.kakao.com/o/geNLycki',
+        '번역': 'https://open.kakao.com/o/ggI5Ccki',
+        '논문 컨설팅': 'https://open.kakao.com/o/gVmtEcki',
+        '대학원 입시 패키지': 'https://open.kakao.com/o/gF3kFkki'
+    };
+    const KAKAO_URL_DEFAULT = 'https://open.kakao.com/o/g5luAcki';
 
     if (btnKakao) {
         btnKakao.addEventListener('click', () => {
@@ -193,7 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         kakaoModalConfirm.addEventListener('click', () => {
             kakaoModal.style.display = 'none';
-            window.open(KAKAO_URL, '_blank');
+            const service = document.getElementById('form-service').value;
+            const url = KAKAO_URLS[service] || KAKAO_URL_DEFAULT;
+            window.open(url, '_blank');
         });
 
         kakaoModal.addEventListener('click', (e) => {
