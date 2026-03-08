@@ -77,6 +77,12 @@ nav {
     color: var(--gold);
 }
 
+.btn-inquiry,
+.btn-inquiry:hover,
+.btn-inquiry.active {
+    color: var(--dark) !important;
+}
+
 .btn-inquiry {
     background: var(--gold);
     color: var(--dark);
