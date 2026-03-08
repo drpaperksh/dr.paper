@@ -774,11 +774,11 @@
       <div class="form-title">📋 빠른 문의 접수</div>
       <div class="form-group">
         <label>이름</label>
-        <input type="text" placeholder="성함을 입력해 주세요" />
+        <input id="form-name" type="text" placeholder="성함을 입력해 주세요" />
       </div>
       <div class="form-group">
         <label>서비스 유형</label>
-        <select>
+        <select id="form-service">
           <option value="">서비스를 선택해 주세요</option>
           <option>유학 SOP/PS</option>
           <option>국내 대학원 학업계획서</option>
@@ -789,13 +789,13 @@
       </div>
       <div class="form-group">
         <label>지원 학교 / 전공</label>
-        <input type="text" placeholder="예: Harvard, 경영학 / 서울대 대학원 정치학과" />
+        <input id="form-school" type="text" placeholder="예: Harvard, 경영학 / 서울대 대학원 정치학과" />
       </div>
       <div class="form-group">
         <label>문의 내용</label>
-        <textarea placeholder="현재 상황, 지원 일정, 궁금한 점을 자유롭게 작성해 주세요."></textarea>
+        <textarea id="form-inquiry" placeholder="현재 상황, 지원 일정, 궁금한 점을 자유롭게 작성해 주세요."></textarea>
       </div>
-      <a href="https://open.kakao.com/o/so58F7ji" target="_blank" rel="noopener noreferrer" class="btn-kakao">카카오톡으로 문의하기</a>
+      <button id="btn-kakao" class="btn-kakao">카카오톡으로 문의하기</button>
     </div>
   </section>
 
@@ -805,6 +805,19 @@
       <p class="footer-text">© 2024-2026 김상현 학술 컨설팅. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Kakao Modal -->
+  <div id="kakao-modal" class="kakao-modal-overlay" style="display:none;">
+    <div class="kakao-modal-box">
+      <div class="kakao-modal-icon">💬</div>
+      <div class="kakao-modal-title">문의 내용이 복사되었습니다</div>
+      <div class="kakao-modal-body">
+        오픈채팅이 열리면 채팅창에서<br>
+        <strong>Ctrl+V (붙여넣기)</strong> 후 전송해 주세요.
+      </div>
+      <button id="kakao-modal-confirm" class="kakao-modal-btn">확인 — 오픈채팅 열기</button>
+    </div>
+  </div>
 
   <!-- Back to Top Button -->
   <button id="btn-back-to-top" title="위로 가기">↑</button>
