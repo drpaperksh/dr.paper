@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const kakaoModalConfirm = document.getElementById('kakao-modal-confirm');
     const KAKAO_URL = 'https://open.kakao.com/o/so58F7ji';
 
-    if (btnKakao && kakaoModal && kakaoModalConfirm) {
+    if (btnKakao) {
         btnKakao.addEventListener('click', () => {
             const name = document.getElementById('form-name').value.trim() || '(미입력)';
             const service = document.getElementById('form-service').value || '(미선택)';
@@ -172,9 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 `문의 내용: ${inquiry}\n` +
                 `━━━━━━━━━━━━━━━━`;
 
-            // 모달 먼저 표시 (클립보드 결과와 무관하게 항상 실행)
-            kakaoModal.style.display = 'flex';
-
             // 클립보드 복사 시도
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(text).catch(() => {});
@@ -189,16 +186,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 try { document.execCommand('copy'); } catch (e) {}
                 document.body.removeChild(el);
             }
-        });
 
-        kakaoModalConfirm.addEventListener('click', () => {
-            kakaoModal.style.display = 'none';
-            window.open(KAKAO_URL, '_blank');
-        });
+            // 브라우저 기본 confirm 다이얼로그 (모든 기기 호환)
+            const confirmed = confirm(
+                '문의 내용이 클립보드에 복사되었습니다.\n\n' +
+                '오픈채팅에서 붙여넣기 후 전송해 주세요.\n' +
+                '(모바일: 길게 누르기 → 붙여넣기)'
+            );
 
-        kakaoModal.addEventListener('click', (e) => {
-            if (e.target === kakaoModal) {
-                kakaoModal.style.display = 'none';
+            if (confirmed) {
+                window.open(KAKAO_URL, '_blank');
             }
         });
     }
