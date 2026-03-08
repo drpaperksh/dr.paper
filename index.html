@@ -8,9 +8,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <script src="script.js?v=2" defer></script>
+  <script src="script.js?v=3" defer></script>
 </head>
 
 <body>
@@ -805,6 +805,20 @@
       <p class="footer-text">© 2024-2026 김상현 학술 컨설팅. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Kakao Modal -->
+  <div id="kakao-modal" class="kakao-modal-overlay" style="display:none;">
+    <div class="kakao-modal-box">
+      <div class="kakao-modal-icon">💬</div>
+      <div class="kakao-modal-title">문의 내용이 복사되었습니다</div>
+      <div class="kakao-modal-body">
+        오픈채팅이 열리면 채팅창에서<br>
+        <strong>붙여넣기</strong> 후 전송해 주세요.<br>
+        <span class="kakao-modal-hint">(모바일: 길게 누르기 → 붙여넣기)</span>
+      </div>
+      <button id="kakao-modal-confirm" class="kakao-modal-btn">확인 — 오픈채팅 열기</button>
+    </div>
+  </div>
 
   <!-- Back to Top Button -->
   <button id="btn-back-to-top" title="위로 가기">↑</button>

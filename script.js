@@ -187,15 +187,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.removeChild(el);
             }
 
-            // 브라우저 기본 confirm 다이얼로그 (모든 기기 호환)
-            const confirmed = confirm(
-                '문의 내용이 클립보드에 복사되었습니다.\n\n' +
-                '오픈채팅에서 붙여넣기 후 전송해 주세요.\n' +
-                '(모바일: 길게 누르기 → 붙여넣기)'
-            );
+            // 모달 표시
+            kakaoModal.style.display = 'flex';
+        });
 
-            if (confirmed) {
-                window.open(KAKAO_URL, '_blank');
+        kakaoModalConfirm.addEventListener('click', () => {
+            kakaoModal.style.display = 'none';
+            window.open(KAKAO_URL, '_blank');
+        });
+
+        kakaoModal.addEventListener('click', (e) => {
+            if (e.target === kakaoModal) {
+                kakaoModal.style.display = 'none';
             }
         });
     }
