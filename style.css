@@ -1313,6 +1313,10 @@ nav {
         display: none;
     }
 
+    .nav-links.active .btn-inquiry {
+        display: inline-block;
+    }
+
     /* 문의하기 버튼은 네비게이션 내부에 따로 배치하거나 숨김 처리 */
 
     .hero {
