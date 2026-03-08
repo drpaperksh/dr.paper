@@ -172,12 +172,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 `문의 내용: ${inquiry}\n` +
                 `━━━━━━━━━━━━━━━━`;
 
-            const copyToClipboard = (str) => {
-                if (navigator.clipboard && window.isSecureContext) {
-                    return navigator.clipboard.writeText(str);
-                }
+            // 모달 먼저 표시 (클립보드 결과와 무관하게 항상 실행)
+            kakaoModal.style.display = 'flex';
+
+            // 클립보드 복사 시도
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).catch(() => {});
+            } else {
                 const el = document.createElement('textarea');
-                el.value = str;
+                el.value = text;
                 el.style.position = 'fixed';
                 el.style.opacity = '0';
                 document.body.appendChild(el);
@@ -185,12 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.select();
                 try { document.execCommand('copy'); } catch (e) {}
                 document.body.removeChild(el);
-                return Promise.resolve();
-            };
-
-            copyToClipboard(text).finally(() => {
-                kakaoModal.style.display = 'flex';
-            });
+            }
         });
 
         kakaoModalConfirm.addEventListener('click', () => {
