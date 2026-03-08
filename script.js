@@ -150,7 +150,62 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Pricing Calculator
+    // 6. KakaoTalk 문의 — 클립보드 복사 + 모달
+    const btnKakao = document.getElementById('btn-kakao');
+    const kakaoModal = document.getElementById('kakao-modal');
+    const kakaoModalConfirm = document.getElementById('kakao-modal-confirm');
+    const KAKAO_URL = 'https://open.kakao.com/o/so58F7ji';
+
+    if (btnKakao && kakaoModal && kakaoModalConfirm) {
+        btnKakao.addEventListener('click', () => {
+            const name = document.getElementById('form-name').value.trim() || '(미입력)';
+            const service = document.getElementById('form-service').value || '(미선택)';
+            const school = document.getElementById('form-school').value.trim() || '(미입력)';
+            const inquiry = document.getElementById('form-inquiry').value.trim() || '(미입력)';
+
+            const text =
+                `[김상현 학술 컨설팅 문의]\n` +
+                `━━━━━━━━━━━━━━━━\n` +
+                `이름: ${name}\n` +
+                `서비스 유형: ${service}\n` +
+                `지원 학교 / 전공: ${school}\n` +
+                `문의 내용: ${inquiry}\n` +
+                `━━━━━━━━━━━━━━━━`;
+
+            const copyToClipboard = (str) => {
+                if (navigator.clipboard && window.isSecureContext) {
+                    return navigator.clipboard.writeText(str);
+                }
+                const el = document.createElement('textarea');
+                el.value = str;
+                el.style.position = 'fixed';
+                el.style.opacity = '0';
+                document.body.appendChild(el);
+                el.focus();
+                el.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(el);
+                return Promise.resolve();
+            };
+
+            copyToClipboard(text).finally(() => {
+                kakaoModal.style.display = 'flex';
+            });
+        });
+
+        kakaoModalConfirm.addEventListener('click', () => {
+            kakaoModal.style.display = 'none';
+            window.open(KAKAO_URL, '_blank');
+        });
+
+        kakaoModal.addEventListener('click', (e) => {
+            if (e.target === kakaoModal) {
+                kakaoModal.style.display = 'none';
+            }
+        });
+    }
+
+    // 7. Pricing Calculator
     const priceCheckboxes = document.querySelectorAll('.price-checkbox');
     const totalPriceElement = document.getElementById('total-price');
 
