@@ -287,8 +287,8 @@ nav {
     background: var(--cream);
     padding: 80px 60px;
     display: flex;
-    gap: 80px;
-    align-items: flex-start;
+    gap: 40px;
+    align-items: center;
 }
 
 .about-left {
@@ -408,6 +408,62 @@ nav {
 .book-stat .label {
     font-size: 12px;
     color: #a0aab8;
+}
+
+.about-book-wrap {
+    width: 250px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.about-book-wrap:hover {
+    transform: translateY(-8px);
+}
+
+.about-book-img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.about-book-wrap:hover .about-book-img {
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+}
+
+.btn-buy-book {
+    background: #f4c542;
+    /* 기존보다 훨씬 밝고 산뜻한 황금/노란색 */
+    color: var(--dark);
+    font-weight: 800;
+    font-size: 14px;
+    padding: 10px 26px;
+    /* 좌우 컴팩트하게 조절 */
+    border-radius: 30px;
+    /* 둥근 알약 형태로 책을 덜 가리도록 */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-block;
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    /* 80%를 제거하고 글자 폭에 딱 맞춤 */
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+}
+
+.btn-buy-book:hover {
+    background: #ffe373;
+    /* 마우스 오버 시 더 밝아지는 색상 */
+    box-shadow: 0 6px 16px rgba(244, 197, 66, 0.5);
 }
 
 /* SERVICES */
@@ -652,6 +708,50 @@ nav {
     height: 18px;
     accent-color: var(--gold);
     cursor: pointer;
+}
+
+.quantity-controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+    background: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid #e4ddd4;
+}
+
+.btn-qty {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--gold);
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.btn-qty:hover {
+    background: #f5efe4;
+}
+
+.qty-val {
+    font-weight: bold;
+    min-width: 14px;
+    text-align: center;
+    color: #1a1a2e;
+}
+
+.row-total {
+    font-weight: 900;
+    text-align: right;
+    font-family: 'Noto Serif KR', serif;
 }
 
 .pricing-total-container {
@@ -1351,6 +1451,12 @@ nav {
 
     .about-right {
         width: 100%;
+    }
+
+    .about-book-wrap {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
     }
 
     .services {

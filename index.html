@@ -106,7 +106,7 @@
         <div class="credential-item">
           <div class="credential-icon">🏛️</div>
           <div>
-            <div class="credential-title">서울 S·H대 15년 교수 경력</div>
+            <div class="credential-title">전) 서울 S·H대 15년 교수 경력</div>
             <div class="credential-desc">성균관대학교 러시아어문학과 전임교수 · 한양대학교 교수 역임</div>
           </div>
         </div>
@@ -151,6 +151,11 @@
           <div class="label">회 공개 강의</div>
         </div>
       </div>
+    </div>
+    <div class="about-book-wrap">
+      <img src="book.png" alt="영어로 논문쓰기 도서" class="about-book-img">
+      <a href="https://product.kyobobook.co.kr/detail/S000213288676" target="_blank" rel="noopener noreferrer"
+        class="btn-buy-book">책 구매하기</a>
     </div>
   </section>
 
@@ -272,23 +277,33 @@
               <td>1개 대학원 기준 · 전문 작성 및 심층 컨설팅</td>
               <td>₩400,000</td>
             </tr>
-            <tr>
+            <tr class="quantity-row" data-unit-price="300000">
               <td>
-                <label class="price-checkbox-label">
-                  <input type="checkbox" class="price-checkbox" value="200000"> 추가 대학원 (동일 전공)
-                </label>
+                <div class="price-checkbox-label" style="padding-left:28px;">추가 대학원 (동일 전공)</div>
               </td>
-              <td>동일 전공 추가 학교</td>
-              <td>₩200,000</td>
+              <td>
+                동일 전공 추가 학교
+                <div class="quantity-controls">
+                  <button type="button" class="btn-qty minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button type="button" class="btn-qty plus">+</button>
+                </div>
+              </td>
+              <td class="row-total">₩0</td>
             </tr>
-            <tr>
+            <tr class="quantity-row" data-unit-price="400000">
               <td>
-                <label class="price-checkbox-label">
-                  <input type="checkbox" class="price-checkbox" value="300000"> 추가 대학원 (다른 전공)
-                </label>
+                <div class="price-checkbox-label" style="padding-left:28px;">추가 대학원 (다른 전공)</div>
               </td>
-              <td>다른 전공 추가 학교</td>
-              <td>₩300,000</td>
+              <td>
+                다른 전공 추가 학교
+                <div class="quantity-controls">
+                  <button type="button" class="btn-qty minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button type="button" class="btn-qty plus">+</button>
+                </div>
+              </td>
+              <td class="row-total">₩0</td>
             </tr>
             <tr>
               <td>

@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 클립보드 복사 시도
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).catch(() => {});
+                navigator.clipboard.writeText(text).catch(() => { });
             } else {
                 const el = document.createElement('textarea');
                 el.value = text;
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.appendChild(el);
                 el.focus();
                 el.select();
-                try { document.execCommand('copy'); } catch (e) {}
+                try { document.execCommand('copy'); } catch (e) { }
                 document.body.removeChild(el);
             }
 
@@ -214,20 +214,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 7. Pricing Calculator
     const priceCheckboxes = document.querySelectorAll('.price-checkbox');
+    const quantityRows = document.querySelectorAll('.quantity-row');
     const totalPriceElement = document.getElementById('total-price');
 
     function calculateTotal() {
         let total = 0;
+
+        // 체크박스 기반 계산
         priceCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 total += parseInt(checkbox.value, 10);
             }
         });
+
+        // 수량 기반 계산
+        quantityRows.forEach(row => {
+            const unitPrice = parseInt(row.getAttribute('data-unit-price'), 10);
+            const qtySpan = row.querySelector('.qty-val');
+            const qty = parseInt(qtySpan.textContent, 10) || 0;
+            const rowTotal = unitPrice * qty;
+
+            total += rowTotal;
+
+            // 각 행별 금액 텍스트 업데이트
+            const rowTotalEl = row.querySelector('.row-total');
+            if (rowTotalEl) {
+                if (qty === 0) {
+                    rowTotalEl.textContent = '₩0';
+                } else {
+                    rowTotalEl.textContent = '₩' + rowTotal.toLocaleString('ko-KR');
+                }
+            }
+        });
+
         totalPriceElement.textContent = total.toLocaleString('ko-KR');
     }
 
     priceCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', calculateTotal);
+    });
+
+    // +, - 버튼 이벤트
+    const btnMinuses = document.querySelectorAll('.btn-qty.minus');
+    const btnPluses = document.querySelectorAll('.btn-qty.plus');
+
+    btnMinuses.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const row = e.target.closest('.quantity-row');
+            const qtySpan = row.querySelector('.qty-val');
+            let currentQty = parseInt(qtySpan.textContent, 10) || 0;
+            if (currentQty > 0) {
+                qtySpan.textContent = currentQty - 1;
+                calculateTotal();
+            }
+        });
+    });
+
+    btnPluses.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const row = e.target.closest('.quantity-row');
+            const qtySpan = row.querySelector('.qty-val');
+            let currentQty = parseInt(qtySpan.textContent, 10) || 0;
+            qtySpan.textContent = currentQty + 1;
+            calculateTotal();
+        });
     });
 
 });
